@@ -1,0 +1,98 @@
+\documentclass[ALICE,manyauthors]{ALICE_analysis_notes}
+%\documentclass[ALICE,manyauthors]{ALICE_scientific_notes}
+%
+%\newcommand{\jpsi}{\rm J/$\psi$}
+%\newcommand{\psip}{$\psi^\prime$}
+%\newcommand{\jpsiDY}{\rm J/$\psi$\,/\,DY}
+%\newcommand{\dd}{\mathrm{d}}
+%\newcommand{\chic}{$\chi_{\rm c}$}
+%\newcommand{\ezdc}{$E_{\rm ZDC}$}
+%\newcommand{\red}{\textcolor{red}}
+%\newcommand{\blue}{\textcolor{blue}}
+\newcommand{\slfrac}[2]{\left.#1\right/#2}
+\usepackage{rotating}
+\RequirePackage{ifpdf}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xspace}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{lineno}
+\usepackage[pdftex,usenames,dvipsnames]{xcolor}
+\usepackage{cite}
+\usepackage{pdflscape}
+\usepackage{ctable}
+\usepackage{rotating}
+\usepackage{multirow}
+\usepackage{tabulary}
+\usepackage{array,booktabs}
+\usepackage{tabularx}
+\ifpdf
+  \DeclareGraphicsExtensions{.pdf}
+  \usepackage[pdftex]{hyperref}
+
+  \hypersetup{
+    final,
+    a4paper=true,
+    colorlinks=false,
+    bookmarks=true,
+    pdffitwindow=true,
+    pdfnewwindow=true,	
+    pdfauthor={ALICE Collaboration},
+    pdfcreator={pdflatex},
+    pdfproducer={ALICE Collaboration},
+    pdftitle={Title},
+    pdfsubject={Title},
+    pdfkeywords={}
+  }
+
+%   \pdfcompresslevel 1
+\else
+   % put here packages only for the DVI:
+  \usepackage[pdftex]{hyperref}
+\fi
+\usepackage{hyperref}
+
+\usepackage{cleveref}
+%
+\begin{document}%
+\input{include/commands}
+\linenumbers
+
+%%%%%%%%%%%%% ptdr definitions %%%%%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%  Title page %%%%%%%%%%%%%%%%%%%%%%%%
+%
+\begin{titlepage}
+%
+\PHnumber{ALICE-ANA-2019-xxx} 
+\PHdate{\today}
+%
+%%% Put your own title + short title here:
+\title{Documentation for the new analysis framework}
+%
+\author{}
+%
+\ShortAuthor{ALICE Analysis Note 2019}      % appears on left page headers, do not change
+%
+\begin{abstract}
+Here goes your abstract
+\end{abstract}
+\end{titlepage}
+\setcounter{page}{2}
+%
+%\input{alice_mynote.tex}               %%%%%%%%%%% put the body of the article here
+% -- | Table Of Contents | ---------------------------------------
+\clearpage
+\pdfbookmark[0]{Table of Contents}{toc}
+\tableofcontents
+\clearpage
+% -- | Content | -------------------------------------------------
+\input{content/Selection}               %%%%%%%%%%% put the body of the article here
+\input{content/Validation} 
+\clearpage
+\bibliographystyle{utphys}
+\bibliography{include/bibfile}
+
+\end{document}
