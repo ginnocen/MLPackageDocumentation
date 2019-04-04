@@ -15,5 +15,7 @@
 \subsection{Normalisation}
 \label{subsec:normValidation}
 
+The number of events used to compute the integrated luminosity, which enters in the calculation of the cross section, calculated by the new framework is compared to the number obtained from AliNormalizationCounter (PWGHF/vertexingHF/AliNormalizationCounter.h). The number of events selected by AliRDHFCuts::IsEventSelected is corrected to take into account the events for which the primary vertex is not reconstructed and $|z_{vtx}|<10$~cm. 
+ 
 - Ds in pp (running Tree Creator and std task in the same train)
 - Lc in PbPb comparison of the events for normalisation/event selected from TTree and from task
