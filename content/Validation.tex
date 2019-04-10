@@ -31,8 +31,7 @@ For the $\Ds$ meson an almost 100\% match is observed. The very few entries that
 \subsection{Efficiency}
 \label{subsec:effValidation}
 
-In Fig.~\ref{fig:EffDsComparisonMCpp} and \ref{fig:EffLcComparisonMCPbPb} the comparison at efficiency level for both prompt and feed-down is shown for \Ds and \Lc respectively. Both the standard analysis bit, and the custom cut selection were enabled in the MLHEP package, and compared to the output of the standard \Ds task and the CorrectionFramework or the \Lc.
-- Comparison efficiency from the package and RecoPID/GenLimAcc from correction framework
+In Fig.~\ref{fig:EffDsComparisonMCpp} and \ref{fig:EffLcComparisonMCPbPb} the comparison at efficiency level for both prompt and feed-down is shown for \Ds and \Lc respectively. Both the standard analysis bit, and the custom cut selection were enabled in the MLHEP package, and compared to the output of the standard \Ds task and the CorrectionFramework of the \Lc. The shown comparison is at kStepRecoPID/kStepGeneratedLimAcc level.
 
 \begin{figure}[tb]
 \begin{center}
@@ -49,6 +48,8 @@ In Fig.~\ref{fig:EffDsComparisonMCpp} and \ref{fig:EffLcComparisonMCPbPb} the co
 \label{fig:EffLcComparisonMCPbPb}
 \end{center}
 \end{figure}
+
+For the $\Ds$ meson an almost 100\% match is observed. The few bins that differ were due to the small bug in the standard $\Ds$ task which  have been fixed. For the \Lc the efficiencies differ a few percent. It was studied in detail, and found to be due to several small inconsistencies between functions in AliVertexingHFUtils and the AliCFVertexingHF. \textcolor{red}{[In the process of providing fixes. Plot will get updated]}
 
 \subsection{Normalisation}
 \label{subsec:normValidation}
