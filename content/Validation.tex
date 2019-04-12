@@ -1,9 +1,9 @@
 \section{Validation of the analysis package}
 \label{sec:validation}
 
-In this section the validation of the MLHEP package, which is performed with respect to the standard AliPhysics Analysis Tasks for the \Ds meson and the \Lc baryon, is presented. This section validates the calculations performed in the package itself, but this depends obviously on the correct filling of the input TTrees. Therefore, when new analyses will start to use the framework, still some validation checks should be perfomed on the TTree creators.
+In this section the validation of the MLHEP package, which is performed with respect to the standard AliPhysics Analysis Tasks for the \Ds meson and the \Lc baryon, is presented. This validation is two-fold, it depends on the calculations performed in the package itself, but also on the correct filling of the input TTrees. For new analyses that will start to use the framework, some validation checks on the filling of the TTrees should always be performed.
 
-As described above, the relevant output of the MLHEP package are root files containing the extracted raw yields, prompt and feed-down efficiencies, and the normalised number of events. These three calculations will be validated with the standard tasks (AliAnalysisTaskSEDs for \Ds and AliAnalysisTaskSELc2V0bachelor + AliCFVertexingHFLctoV0bachelor for \Lc) in the subsections below.
+As described above, the relevant output of the MLHEP package are root files containing the extracted raw yields, prompt and feed-down efficiencies, and the normalised number of events. These three calculations will be validated with the standard tasks (AliAnalysisTaskSEDs for the \Ds meson and AliAnalysisTaskSELc2V0bachelor + AliCFVertexingHFLctoV0bachelor for the \Lc baryon) in the subsections below.
 
 \subsection{Candidate selection and invariant distributions}
 \label{subsec:invMassValidation}
@@ -26,12 +26,12 @@ In Fig.~\ref{fig:InvMassDsComparisonMCpp} and \ref{fig:InvMassLcComparisonMCData
 \end{center}
 \end{figure}
 
-For the $\Ds$ meson an almost 100\% match is observed. The very few entries that differ are understood: It is coming from rounding in the pandas dataframe and a very small bug in the standard $\Ds$ task that only affected MC (has been fixed in the meantime). The same is observed for the $\Lc$ baryon for data and MC ran as it was data. Here, the very few entries that differ are only due to rounding in the dataframes. For MC a difference of a few percent is observed, but also this difference is understood. It is due to different ways of tagging what is signal (e.g. ${\rm X}_{\rm not \, c/b} \rightarrow {\rm B} + {\rm X}_{1} \rightarrow \Lc + {\rm X}_{2}$, which is considered as signal in the standard task, but background in the MLHEP package). When the same conventions are used, a perfect match is obtained, similar as for data. \textcolor{red}{[Plot to be produced?]}
+For the $\Ds$ meson an almost 100\% match is observed. The very few entries that differ are understood. They are due to rounding in the pandas dataframe and a very small bug in the standard $\Ds$ task that only affected MC (which has been fixed in the meantime). The same is observed for the $\Lc$ baryon for data and MC ran as it was data. Here, the very few entries that differ are only due to rounding in the dataframes. For MC a difference of a few percent is observed. This difference is due to different ways of tagging what is signal (e.g. ${\rm X}_{\rm not \, c/b} \rightarrow {\rm B} + {\rm X}_{1} \rightarrow \Lc + {\rm X}_{2}$, which is considered as signal in the standard task, but background in the MLHEP package). When the same conventions are used, a perfect match is obtained, similar as for data.
 
 \subsection{Efficiency}
 \label{subsec:effValidation}
 
-In Fig.~\ref{fig:EffDsComparisonMCpp} and \ref{fig:EffLcComparisonMCPbPb} the comparison at efficiency level for both prompt and feed-down is shown for \Ds and \Lc respectively. Both the standard analysis bit, and the custom cut selection were enabled in the MLHEP package, and compared to the output of the standard \Ds task and the CorrectionFramework of the \Lc. The shown comparison is at kStepRecoPID/kStepGeneratedLimAcc level.
+In Fig.~\ref{fig:EffDsComparisonMCpp} and \ref{fig:EffLcComparisonMCPbPb} the comparison at efficiency level for both prompt and feed-down is shown for \Ds and \Lc respectively. Both the standard analysis bit, and the custom cut selection were enabled in the MLHEP package, and compared to the output of the standard \Ds task and the CorrectionFramework for the \Lc. The shown comparison is at kStepRecoPID/kStepGeneratedLimAcc level.
 
 \begin{figure}[tb]
 \begin{center}
@@ -49,7 +49,7 @@ In Fig.~\ref{fig:EffDsComparisonMCpp} and \ref{fig:EffLcComparisonMCPbPb} the co
 \end{center}
 \end{figure}
 
-For the $\Ds$ meson an almost 100\% match is observed. The few bins that differ were due to the small bug in the standard $\Ds$ task which  have been fixed. For the \Lc the efficiencies differ a few percent. It was studied in detail, and found to be due to several small inconsistencies between functions in AliVertexingHFUtils and the AliCFVertexingHF. \textcolor{red}{[In the process of providing fixes. Plot will get updated]}
+For the $\Ds$ meson an almost 100\% match is observed. The few bins that differ were due to a small bug in the standard $\Ds$ task which has been fixed. For the \Lc, a difference of a few per mille is observed. This is coming from a difference in a momentum conservation check in two AliPhysics classes\footnote{The difference is in AliVertexingHFUtils::Check*decay*Decay() which is checking the absolute difference versus AliCFVertexingHF*decay*::CheckMCChannelDecay() which checks the relative difference. For very low momenta, both methods give different results.}, which will be fixed after the summer conferences of 2019. The method used for the MLHEP package is considered to be the correct one.
 
 \subsection{Normalisation}
 \label{subsec:normValidation}
